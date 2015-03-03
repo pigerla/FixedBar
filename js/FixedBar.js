@@ -6,11 +6,11 @@
  * @param element
  * @constructor
  */
-;( function () {
-  window.FixedBox  = function (element) {
+;(function (window, undefined) {
+  function FixedBox(element) {
     this.element = element;
     this.boxY = getXY(this.element).y;
-  };
+  }
 
   FixedBox.prototype = {
     setCss: function (originClass, addClass) {
@@ -32,7 +32,7 @@
    * @param useCapture
    * @returns {*}
    */
-  window.AddEvent = function (element, eventType, fn, useCapture) {
+  function AddEvent(element, eventType, fn, useCapture) {
     if (element.addEventListener) {
       element.addEventListener(eventType, fn, useCapture);
       return true;
@@ -41,7 +41,7 @@
     } else {
       element['on' + eventType] = fn;
     }
-  };
+  }
 
 
   /**
@@ -51,7 +51,7 @@
    */
   function getXY(element) {
     return document.documentElement.getBoundingClientRect && (function () {
-      //取元素坐标，如元素或其上层元素设置position relative
+      //getBoundingClientRect 获取该对象具有top、left、right、bottom四个属性，分别代表该元素上、左、右、下四条边界相对于浏览器窗口左上角的偏移像素值
       var position = element.getBoundingClientRect();
       return {
         x: position.left + document.documentElement.scrollLeft,
@@ -69,4 +69,7 @@
       }
     })();
   }
-})();
+
+  window.FixedBox = window.FixedBox || FixedBox ;
+  window.AddEvent = window.AddEvent || AddEvent ;
+})(window);
