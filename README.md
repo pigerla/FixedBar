@@ -1,6 +1,6 @@
 # FixedBar
 ---
-A plugin of a bar which is fixed at top
+A plugin of a bar which is fixed at top.
 
 ## How to use ?
 	<script type="text/javascript" src="pathTo/FixedBar.min.js"></script> // Linking into html with tag 'script'
