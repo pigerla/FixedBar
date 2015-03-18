@@ -6,18 +6,27 @@
  * @param element
  * @constructor
  */
-;(function (window, undefined) {
-  function FixedBox(element) {
+;(function (window) {
+
+  function FixedBox( element ) {
     this.element = element;
+    this.elementClone = element.cloneNode(true);
     this.boxY = getXY(this.element).y;
+    this.init = function () {
+      this.element.parentNode.insertBefore(this.elementClone, this.element);
+      this.elementClone.style.display = 'none';
+    }
   }
 
   FixedBox.prototype = {
     setCss: function (originClass, addClass) {
       var windowST = ( document.compatMode && document.compatMode != "CSS1Compat") ? document.body.scrollTop : document.documentElement.scrollTop || window.pageYOffset;
-      if (windowST > this.boxY) {
+      if (windowST >= this.boxY) {
         this.element.className = originClass + ' ' + addClass;
+        this.elementClone.style.display = 'block';
+        this.elementClone.style.visibility = 'hidden';
       } else {
+        this.elementClone.style.display = 'none';
         this.element.className = originClass;
       }
     }

@@ -8,10 +8,8 @@
 <body>
 <section>
     <h1>Fixed Bar Demo</h1>
-    <p>aaa</p>
-    <p id="fixedBar" class="originClass"> Fixed Bar Demo </p>
-    <p>cccc</p>
-    <p>dddd</p>
+    <p>test content</p>
+    <p id="fixedBar" class="originClass"> Fixed Bar Demo is Fixed </p>
     <p>test content</p>
     <p>test content</p>
     <p>test content</p>
@@ -35,50 +33,11 @@
     <p>test content</p>
     <p>test content</p>
     <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <p>test content</p>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
 </section>
-<script type="text/javascript" src="../js/FixedBar.min.js"></script>
+<script type="text/javascript" src="../js/FixedBar.js"></script>
 <script type="text/javascript">
     var fixedBarObject = new FixedBox(document.getElementById('fixedBar'));
+    fixedBarObject.init();
     AddEvent( window, 'scroll', function () {
         fixedBarObject.setCss('originClass', 'changeClass');
     });
